@@ -6,6 +6,7 @@ data class MonthlyComparisonResult(
     val emiPaid: Double,
     val principalPaid: Double,
     val interestPaid: Double,
+    val partPrepaymentPaid: Double,
     val remainingLoanBalance: Double,
     val propertyValue: Double,
     val monthlyBuyOutflow: Double,

@@ -12,6 +12,7 @@ data class ScheduleDisplayRow(
     val emiPaid: Double,
     val principalPaid: Double,
     val interestPaid: Double,
+    val partPrepaymentPaid: Double,
     val remainingLoan: Double,
     val buyExpenses: Double,
     val propertyValue: Double,

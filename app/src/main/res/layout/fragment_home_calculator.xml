@@ -663,17 +663,33 @@
                 android:text="Monthly" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Evaluate Action Button -->
-        <Button
-            android:id="@+id/btnEvaluate"
-            style="@style/Widget.Material3.Button"
+        <!-- Evaluate Action Button Container -->
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingVertical="12dp"
-            android:text="Evaluate Buy vs Rent"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/btnEvaluate"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="12dp"
+                android:text="Evaluate Buy vs Rent"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/progressEvaluating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:indicatorColor="?attr/colorOnPrimary"
+                app:indicatorSize="24dp"
+                app:trackThickness="3dp" />
+        </FrameLayout>
 
         <!-- Evaluated Recommendation & Derived Metrics Card -->
         <com.google.android.material.card.MaterialCardView
@@ -1025,6 +1041,16 @@
                                 android:text="Interest"
                                 android:maxLines="1"
                                 android:textColor="?attr/colorError"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="95dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:text="Part Prepay"
+                                android:maxLines="1"
+                                android:textColor="?attr/colorPrimary"
                                 android:textSize="12sp"
                                 android:textStyle="bold" />
 

@@ -27,6 +27,7 @@ import com.amitr.buyvsrentcalc.domain.model.PrepaymentFrequency
 import com.amitr.buyvsrentcalc.domain.model.ScheduleDisplayRow
 import com.amitr.buyvsrentcalc.util.CurrencyFormatter
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -97,10 +98,24 @@ class HomeCalculatorFragment : Fragment() {
 
     private fun setupActions() {
         binding.btnEvaluate.setOnClickListener {
-            syncUiToViewModel()
-            viewModel.evaluateCurrentConfig()
-            binding.cardResultSummary.post {
-                binding.root.smoothScrollTo(0, binding.cardResultSummary.top - 16)
+            binding.btnEvaluate.isEnabled = false
+            binding.btnEvaluate.text = "Evaluating Financial Engine..."
+            binding.progressEvaluating.visibility = View.VISIBLE
+
+            viewLifecycleOwner.lifecycleScope.launch {
+                delay(650)
+
+                syncUiToViewModel()
+                viewModel.evaluateCurrentConfig()
+
+                binding.progressEvaluating.visibility = View.GONE
+                binding.btnEvaluate.text = "Evaluate Buy vs Rent"
+                binding.btnEvaluate.isEnabled = true
+
+                binding.cardResultSummary.post {
+                    binding.root.smoothScrollTo(0, binding.cardResultSummary.top - 16)
+                    animateResultCard()
+                }
             }
         }
 
@@ -486,9 +501,11 @@ class HomeCalculatorFragment : Fragment() {
             periodIndex = 0,
             yearIndex = 0,
             isExpanded = false,
+            isTally = false,
             emiPaid = 0.0,
             principalPaid = 0.0,
             interestPaid = 0.0,
+            partPrepaymentPaid = 0.0,
             remainingLoan = if (isLoan) buyParams.loanPrincipal else 0.0,
             buyExpenses = buyParams.upfrontCostsAmount,
             propertyValue = buyParams.propertyPrice,
@@ -516,7 +533,8 @@ class HomeCalculatorFragment : Fragment() {
             val sumEmi = monthsInYear.sumOf { it.emiPaid }
             val sumPrincipal = monthsInYear.sumOf { it.principalPaid }
             val sumInterest = monthsInYear.sumOf { it.interestPaid }
-            val sumExpenses = monthsInYear.sumOf { it.monthlyBuyOutflow - it.emiPaid }
+            val sumPartPrepayments = monthsInYear.sumOf { it.partPrepaymentPaid }
+            val sumExpenses = monthsInYear.sumOf { it.monthlyBuyOutflow - it.emiPaid - it.partPrepaymentPaid }
             val sumRentPaid = monthsInYear.sumOf { it.monthlyRentPaid }
 
             if (!isExpanded) {
@@ -532,6 +550,7 @@ class HomeCalculatorFragment : Fragment() {
                     emiPaid = sumEmi,
                     principalPaid = sumPrincipal,
                     interestPaid = sumInterest,
+                    partPrepaymentPaid = sumPartPrepayments,
                     remainingLoan = lastMonth.remainingLoanBalance,
                     buyExpenses = sumExpenses,
                     propertyValue = lastMonth.propertyValue,
@@ -561,8 +580,9 @@ class HomeCalculatorFragment : Fragment() {
                         emiPaid = mItem.emiPaid,
                         principalPaid = mItem.principalPaid,
                         interestPaid = mItem.interestPaid,
+                        partPrepaymentPaid = mItem.partPrepaymentPaid,
                         remainingLoan = mItem.remainingLoanBalance,
-                        buyExpenses = mItem.monthlyBuyOutflow - mItem.emiPaid,
+                        buyExpenses = mItem.monthlyBuyOutflow - mItem.emiPaid - mItem.partPrepaymentPaid,
                         propertyValue = mItem.propertyValue,
                         moneyOutflowBuy = mItem.monthlyBuyOutflow,
                         cumulativeBuyOutflow = mItem.cumulativeBuyOutflow,
@@ -590,6 +610,7 @@ class HomeCalculatorFragment : Fragment() {
                     emiPaid = sumEmi,
                     principalPaid = sumPrincipal,
                     interestPaid = sumInterest,
+                    partPrepaymentPaid = sumPartPrepayments,
                     remainingLoan = lastMonth.remainingLoanBalance,
                     buyExpenses = sumExpenses,
                     propertyValue = lastMonth.propertyValue,
@@ -803,6 +824,18 @@ class HomeCalculatorFragment : Fragment() {
                 compoundingFrequency = compoundingFreq
             )
         }
+    }
+
+    private fun animateResultCard() {
+        binding.cardResultSummary.alpha = 0f
+        binding.cardResultSummary.scaleX = 0.95f
+        binding.cardResultSummary.scaleY = 0.95f
+        binding.cardResultSummary.animate()
+            .alpha(1f)
+            .scaleX(1f)
+            .scaleY(1f)
+            .setDuration(400)
+            .start()
     }
 
     private fun updateUpfrontCostState(isInclusive: Boolean) {

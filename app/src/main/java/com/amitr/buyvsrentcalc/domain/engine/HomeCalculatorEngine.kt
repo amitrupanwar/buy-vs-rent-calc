@@ -52,6 +52,7 @@ object HomeCalculatorEngine {
             val interestForMonth: Double
             val principalForMonth: Double
             val emiPaidForMonth: Double
+            val prepaymentForMonth: Double
 
             if (buy.isLoanSelected && m <= loanTenureMonths && remainingLoanPrincipal > 0) {
                 interestForMonth = remainingLoanPrincipal * monthlyInterestRateLoan
@@ -61,12 +62,17 @@ object HomeCalculatorEngine {
 
                 val totalPrincipalAttempt = max(0.0, nominalPrincipal) + extraPrepaymentThisMonth
                 principalForMonth = min(remainingLoanPrincipal, totalPrincipalAttempt)
-                emiPaidForMonth = principalForMonth + interestForMonth
+
+                val regularPrincipal = min(remainingLoanPrincipal, max(0.0, nominalPrincipal))
+                prepaymentForMonth = min(max(0.0, remainingLoanPrincipal - regularPrincipal), extraPrepaymentThisMonth)
+
+                emiPaidForMonth = regularPrincipal + interestForMonth
                 remainingLoanPrincipal = max(0.0, remainingLoanPrincipal - principalForMonth)
             } else {
                 interestForMonth = 0.0
                 principalForMonth = 0.0
                 emiPaidForMonth = 0.0
+                prepaymentForMonth = 0.0
             }
 
             // 2. Property Value Growth
@@ -78,7 +84,7 @@ object HomeCalculatorEngine {
             val currentMonthlyUpkeep = (buy.propertyUpkeepAnnualAmount * maintenanceEscalationFactor) / 12.0
             val currentMonthlyTaxAndInsurance = (buy.propertyTaxAnnualAmount * maintenanceEscalationFactor) / 12.0
 
-            val monthlyBuyOutflow = emiPaidForMonth + currentMonthlyMaintenance + currentMonthlyUpkeep + currentMonthlyTaxAndInsurance
+            val monthlyBuyOutflow = emiPaidForMonth + prepaymentForMonth + currentMonthlyMaintenance + currentMonthlyUpkeep + currentMonthlyTaxAndInsurance
             cumulativeBuyOutflow += monthlyBuyOutflow
 
             val buyNetWorth = currentPropertyValue - remainingLoanPrincipal
@@ -132,6 +138,7 @@ object HomeCalculatorEngine {
                     emiPaid = emiPaidForMonth,
                     principalPaid = principalForMonth,
                     interestPaid = interestForMonth,
+                    partPrepaymentPaid = prepaymentForMonth,
                     remainingLoanBalance = remainingLoanPrincipal,
                     propertyValue = currentPropertyValue,
                     monthlyBuyOutflow = monthlyBuyOutflow,

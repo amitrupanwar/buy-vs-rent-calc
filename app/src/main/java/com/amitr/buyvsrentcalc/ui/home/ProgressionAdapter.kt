@@ -114,6 +114,7 @@ class ProgressionAdapter : ListAdapter<ScheduleDisplayRow, RecyclerView.ViewHold
             binding.tvTabEmi.text = CurrencyFormatter.formatExact(item.emiPaid, symbol)
             binding.tvTabPrincipal.text = CurrencyFormatter.formatExact(item.principalPaid, symbol)
             binding.tvTabInterest.text = CurrencyFormatter.formatExact(item.interestPaid, symbol)
+            binding.tvTabPartPrepay.text = CurrencyFormatter.formatExact(item.partPrepaymentPaid, symbol)
             binding.tvTabPendingLoan.text = CurrencyFormatter.formatExact(item.remainingLoan, symbol)
             binding.tvTabBuyExpenses.text = CurrencyFormatter.formatExact(item.buyExpenses, symbol)
             binding.tvTabPropertyValue.text = CurrencyFormatter.formatExact(item.propertyValue, symbol)
