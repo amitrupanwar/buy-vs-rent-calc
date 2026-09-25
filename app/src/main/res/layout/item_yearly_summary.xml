@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="?attr/colorOutlineVariant">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvYearHeader"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="?attr/colorOnSurface"
+                tools:text="Year 5" />
+
+            <TextView
+                android:id="@+id/tvNetAdvantageBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnPrimary"
+                android:background="@drawable/shape_badge_rounded"
+                tools:text="+ ₹4.2 Lakhs (Buy Wins)" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="8dp"
+            android:background="?attr/colorOutlineVariant" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="*">
+
+            <TableRow android:paddingVertical="2dp">
+                <TextView
+                    android:text="Property Value:"
+                    android:textSize="12sp"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+                <TextView
+                    android:id="@+id/tvPropertyValue"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    android:textColor="?attr/colorOnSurface"
+                    tools:text="₹63.8 Lakhs" />
+            </TableRow>
+
+            <TableRow android:paddingVertical="2dp">
+                <TextView
+                    android:text="Remaining Loan:"
+                    android:textSize="12sp"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+                <TextView
+                    android:id="@+id/tvRemainingLoan"
+                    android:textSize="12sp"
+                    android:gravity="end"
+                    android:textColor="?attr/colorError"
+                    tools:text="₹34.2 Lakhs" />
+            </TableRow>
+
+            <TableRow android:paddingVertical="2dp">
+                <TextView
+                    android:text="Buy Net Worth:"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorPrimary" />
+                <TextView
+                    android:id="@+id/tvBuyNetWorth"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    android:textColor="?attr/colorPrimary"
+                    tools:text="₹29.6 Lakhs" />
+            </TableRow>
+
+            <TableRow android:paddingVertical="2dp">
+                <TextView
+                    android:text="Investment Fund (Rent):"
+                    android:textSize="12sp"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+                <TextView
+                    android:id="@+id/tvInvestmentPortfolio"
+                    android:textSize="12sp"
+                    android:gravity="end"
+                    android:textColor="?attr/colorOnSurface"
+                    tools:text="₹24.1 Lakhs" />
+            </TableRow>
+
+            <TableRow android:paddingVertical="2dp">
+                <TextView
+                    android:text="Rent Net Worth:"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorSecondary" />
+                <TextView
+                    android:id="@+id/tvRentNetWorth"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:gravity="end"
+                    android:textColor="?attr/colorSecondary"
+                    tools:text="₹25.4 Lakhs" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

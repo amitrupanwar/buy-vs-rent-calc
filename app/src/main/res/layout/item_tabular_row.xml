@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutRowRoot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="?attr/selectableItemBackground">
+
+    <!-- Period Column (Year or Month) -->
+    <TextView
+        android:id="@+id/tvTabPeriod"
+        android:layout_width="85dp"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="8dp"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:gravity="center_vertical"
+        android:textColor="?attr/colorOnSurface"
+        tools:text="Year 5 ▼" />
+
+    <!-- 1. BUY SCENARIO GROUP (Light Blue Tint Background) -->
+    <LinearLayout
+        android:id="@+id/layoutTabBuyGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingVertical="8dp"
+        android:gravity="center_vertical"
+        android:background="#150284C7">
+
+        <LinearLayout
+            android:id="@+id/layoutTabLoanFields"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvTabEmi"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:gravity="end"
+                android:maxLines="1"
+                android:textColor="?attr/colorOnSurface"
+                tools:text="₹34,700" />
+
+            <TextView
+                android:id="@+id/tvTabPrincipal"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:gravity="end"
+                android:maxLines="1"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                tools:text="₹8,200" />
+
+            <TextView
+                android:id="@+id/tvTabInterest"
+                android:layout_width="95dp"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:gravity="end"
+                android:maxLines="1"
+                android:textColor="?attr/colorError"
+                tools:text="₹26,500" />
+
+            <TextView
+                android:id="@+id/tvTabPendingLoan"
+                android:layout_width="105dp"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:gravity="end"
+                android:maxLines="1"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                tools:text="₹38.5 Lakhs" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTabBuyExpenses"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            tools:text="₹5,200" />
+
+        <TextView
+            android:id="@+id/tvTabPropertyValue"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurface"
+            tools:text="₹63.8 Lakhs" />
+
+        <TextView
+            android:id="@+id/tvTabMoneyOutflowBuy"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            tools:text="₹39,900" />
+
+        <TextView
+            android:id="@+id/tvTabCumBuyOutflow"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            tools:text="₹4.2 Lakhs" />
+
+        <TextView
+            android:id="@+id/tvTabBuyNetWorth"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:paddingEnd="6dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorPrimary"
+            tools:text="₹29.6 Lakhs" />
+    </LinearLayout>
+
+    <!-- 2. RENT & INVEST SCENARIO GROUP (Light Rose Tint Background) -->
+    <LinearLayout
+        android:id="@+id/layoutTabRentGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:paddingVertical="8dp"
+        android:gravity="center_vertical"
+        android:background="#15E11D48">
+
+        <TextView
+            android:id="@+id/tvTabRentPaid"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="6dp"
+            android:textSize="11sp"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurface"
+            tools:text="₹20,000" />
+
+        <TextView
+            android:id="@+id/tvTabMoneyOutflowRent"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            tools:text="₹21,200" />
+
+        <TextView
+            android:id="@+id/tvTabInvestInjected"
+            android:layout_width="105dp"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            tools:text="+₹18,700" />
+
+        <TextView
+            android:id="@+id/tvTabPortfolioValue"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurface"
+            tools:text="₹24.1 Lakhs" />
+
+        <TextView
+            android:id="@+id/tvTabCumRentOutflow"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            tools:text="₹3.1 Lakhs" />
+
+        <TextView
+            android:id="@+id/tvTabRentNetWorth"
+            android:layout_width="115dp"
+            android:layout_height="wrap_content"
+            android:paddingEnd="6dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:gravity="end"
+            android:maxLines="1"
+            android:textColor="?attr/colorSecondary"
+            tools:text="₹25.4 Lakhs" />
+    </LinearLayout>
+
+    <!-- 3. ADVANTAGE COLUMN -->
+    <TextView
+        android:id="@+id/tvTabAdvantage"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="8dp"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:gravity="end"
+        android:maxLines="1"
+        android:textColor="?attr/colorPrimary"
+        tools:text="+₹4.2L Buy" />
+
+</LinearLayout>

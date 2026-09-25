@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home_calc">
+
+    <fragment
+        android:id="@+id/nav_home_calc"
+        android:name="com.amitr.buyvsrentcalc.ui.home.HomeCalculatorFragment"
+        android:label="Buy vs Rent Calc"
+        tools:layout="@layout/fragment_home_calculator" />
+
+    <fragment
+        android:id="@+id/nav_settings"
+        android:name="com.amitr.buyvsrentcalc.ui.settings.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

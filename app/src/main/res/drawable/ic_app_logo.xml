@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="32dp"
+    android:viewportWidth="32"
+    android:viewportHeight="32">
+
+    <!-- House Structure -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M16,6 L6,14 L8,14 L8,24 L24,24 L24,14 L26,14 Z" />
+
+    <!-- Inner Accent -->
+    <path
+        android:fillColor="#0284C7"
+        android:pathData="M13,17 L19,17 L19,24 L13,24 Z" />
+
+    <!-- Upward Trend Line -->
+    <path
+        android:strokeColor="#22C55E"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M6,22 L12,17 L17,19 L25,10" />
+
+    <path
+        android:fillColor="#22C55E"
+        android:pathData="M25,10 L20,10 L25,15 Z" />
+</vector>
