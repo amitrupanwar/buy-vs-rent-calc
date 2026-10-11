@@ -1,5 +1,6 @@
 package com.amitr.buyvsrentcalc.ui.home
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -53,6 +54,7 @@ class HomeCalculatorFragment : Fragment() {
     override fun onViewCreated(view: View, layoutInstanceState: Bundle?) {
         super.onViewCreated(view, layoutInstanceState)
 
+        setupAppHighlights()
         setupRecyclerView()
         setupCurrencyDropdown()
         setupInputListeners()
@@ -851,6 +853,47 @@ class HomeCalculatorFragment : Fragment() {
                 compoundingFrequency = compoundingFreq
             )
         }
+    }
+
+    private fun setupAppHighlights() {
+        val prefs = requireContext().getSharedPreferences("buy_vs_rent_prefs", Context.MODE_PRIVATE)
+        val isHidden = prefs.getBoolean("key_hide_highlights", false)
+
+        if (isHidden) {
+            binding.cardAppHighlights.visibility = View.GONE
+        } else {
+            binding.cardAppHighlights.visibility = View.VISIBLE
+            animateAppHighlightsEntrance()
+
+            val dismissAction = View.OnClickListener {
+                prefs.edit().putBoolean("key_hide_highlights", true).apply()
+                animateAppHighlightsExit()
+            }
+
+            binding.ibDismissHighlights.setOnClickListener(dismissAction)
+            binding.btnDismissHighlights.setOnClickListener(dismissAction)
+        }
+    }
+
+    private fun animateAppHighlightsEntrance() {
+        binding.cardAppHighlights.alpha = 0f
+        binding.cardAppHighlights.scaleY = 0.9f
+        binding.cardAppHighlights.animate()
+            .alpha(1f)
+            .scaleY(1f)
+            .setDuration(400)
+            .start()
+    }
+
+    private fun animateAppHighlightsExit() {
+        binding.cardAppHighlights.animate()
+            .alpha(0f)
+            .scaleY(0.8f)
+            .setDuration(300)
+            .withEndAction {
+                binding.cardAppHighlights.visibility = View.GONE
+            }
+            .start()
     }
 
     private fun animateResultCard() {
