@@ -13,10 +13,12 @@ import android.widget.Filter
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.amitr.buyvsrentcalc.R
 import com.amitr.buyvsrentcalc.databinding.FragmentHomeCalculatorBinding
@@ -37,7 +39,7 @@ class HomeCalculatorFragment : Fragment() {
     private var _binding: FragmentHomeCalculatorBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: HomeCalculatorViewModel by viewModels()
+    private val viewModel: HomeCalculatorViewModel by activityViewModels()
     private val progressionAdapter = ProgressionAdapter()
     private var currentCurrencySymbol: String = "₹"
     private val expandedYearIndices = mutableSetOf<Int>()
@@ -105,10 +107,6 @@ class HomeCalculatorFragment : Fragment() {
 
         binding.btnSaveDecision.setOnClickListener {
             showSaveConfirmDialog()
-        }
-
-        binding.btnLoadSaved.setOnClickListener {
-            showSavedDecisionsDialog()
         }
 
         binding.horizonSliderView.slider.setLabelFormatter { value ->
@@ -289,6 +287,7 @@ class HomeCalculatorFragment : Fragment() {
             .setMessage("Enter profile name to save your calculation:")
             .setView(input)
             .setPositiveButton("Save") { _, _ ->
+                syncUiToViewModel()
                 val title = input.text.toString().ifBlank { "Home Buy vs Rent Check" }
                 binding.etProfileTitle.setText(title)
                 viewModel.updateProfileTitle(title)
@@ -308,10 +307,10 @@ class HomeCalculatorFragment : Fragment() {
     private fun showSaveSuccessAlert(title: String) {
         AlertDialog.Builder(requireContext())
             .setTitle("Check Saved Successfully!")
-            .setMessage("Decision check '$title' has been saved. You can access or load it anytime from 'Saved Checks'.")
+            .setMessage("Decision check '$title' has been saved with date timestamp. You can access or load it anytime from History.")
             .setPositiveButton("OK", null)
-            .setNeutralButton("View Saved Checks") { _, _ ->
-                showSavedDecisionsDialog()
+            .setNeutralButton("View History") { _, _ ->
+                findNavController().navigate(R.id.nav_history)
             }
             .show()
     }

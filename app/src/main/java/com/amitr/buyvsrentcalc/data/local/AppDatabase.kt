@@ -9,7 +9,7 @@ import com.amitr.buyvsrentcalc.data.local.entity.HomeDecisionEntity
 
 @Database(
     entities = [HomeDecisionEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {

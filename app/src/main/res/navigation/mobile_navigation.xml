@@ -8,8 +8,14 @@
     <fragment
         android:id="@+id/nav_home_calc"
         android:name="com.amitr.buyvsrentcalc.ui.home.HomeCalculatorFragment"
-        android:label="Buy vs Rent Calc"
+        android:label="Buy vs Rent Calculator"
         tools:layout="@layout/fragment_home_calculator" />
+
+    <fragment
+        android:id="@+id/nav_history"
+        android:name="com.amitr.buyvsrentcalc.ui.history.HistoryFragment"
+        android:label="Saved History"
+        tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/nav_settings"

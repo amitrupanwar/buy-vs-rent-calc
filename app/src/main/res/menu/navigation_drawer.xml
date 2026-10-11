@@ -6,8 +6,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home_calc"
-            android:icon="@drawable/ic_slideshow_black_24dp"
-            android:title="Home Buy vs Rent" />
+            android:icon="@drawable/ic_calculator"
+            android:title="Calculator" />
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_history"
+            android:title="Saved History" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings_black_24dp"

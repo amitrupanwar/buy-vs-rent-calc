@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorSurface">
+
+    <!-- Header Banner -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        android:background="?attr/colorSurfaceContainerHigh">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="History"
+            android:src="@drawable/ic_history"
+            app:tint="?attr/colorPrimary" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Saved Decision History"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvHistoryCountHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="12sp"
+                tools:text="3 saved decision checks available" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Empty State Container -->
+    <LinearLayout
+        android:id="@+id/layoutHistoryEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:contentDescription="Empty History"
+            android:src="@drawable/ic_history"
+            app:tint="?attr/colorOutline" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="No Saved Decision Checks Yet"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="Evaluate any Buy vs Rent check on the Calculator tab and tap 'Save Decision Check' to store it here for future review."
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- History RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHistoryList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingVertical="8dp"
+        android:clipToPadding="false"
+        tools:listitem="@layout/item_history_card" />
+
+</LinearLayout>

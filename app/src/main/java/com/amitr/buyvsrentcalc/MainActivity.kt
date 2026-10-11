@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         val topLevelDestinations = setOf(
-            R.id.nav_home_calc, R.id.nav_settings
+            R.id.nav_home_calc, R.id.nav_history, R.id.nav_settings
         )
 
         appBarConfiguration = if (binding.drawerLayout != null && binding.navView != null) {
@@ -55,9 +55,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.nav_history -> {
+                val navController = findNavController(R.id.nav_host_fragment_content_main)
+                navController.navigate(R.id.nav_history)
+                return true
+            }
             R.id.nav_settings -> {
                 val navController = findNavController(R.id.nav_host_fragment_content_main)
                 navController.navigate(R.id.nav_settings)
+                return true
             }
         }
         return super.onOptionsItemSelected(item)

@@ -51,6 +51,7 @@ data class HomeDecisionEntity(
         return HomeDecisionConfig(
             id = id,
             profileTitle = profileTitle,
+            createdTimestamp = createdTimestamp,
             evaluationHorizonYears = evaluationHorizonYears,
             buyParams = HomeBuyParams(
                 propertyPrice = propertyPrice,
@@ -104,6 +105,7 @@ data class HomeDecisionEntity(
             return HomeDecisionEntity(
                 id = config.id,
                 profileTitle = config.profileTitle,
+                createdTimestamp = config.createdTimestamp,
                 evaluationHorizonYears = config.evaluationHorizonYears,
                 propertyPrice = config.buyParams.propertyPrice,
                 downPaymentValue = config.buyParams.downPaymentValue,
