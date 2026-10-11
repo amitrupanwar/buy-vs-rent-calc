@@ -443,6 +443,7 @@ class HomeCalculatorFragment : Fragment() {
                 }
                 launch {
                     viewModel.currentConfig.collectLatest { config ->
+                        populateUiFromConfig(config)
                         binding.tvHorizonLabel.text = "Evaluation Horizon: ${config.evaluationHorizonYears} Years"
                         val clampedYears = config.evaluationHorizonYears.toFloat().coerceIn(1f, 30f)
                         if (binding.horizonSliderView.slider.value != clampedYears) {
@@ -747,37 +748,65 @@ class HomeCalculatorFragment : Fragment() {
             .show()
     }
 
+    private fun setIfNotFocused(editText: EditText, text: String) {
+        if (!editText.hasFocus() && editText.text.toString() != text) {
+            editText.setText(text)
+        }
+    }
+
     private fun populateUiFromConfig(config: HomeDecisionConfig) {
-        binding.etProfileTitle.setText(config.profileTitle)
-        binding.etPropertyPrice.setText(formatNumberForInput(config.buyParams.propertyPrice))
-        binding.etDownPaymentValue.setText(formatNumberForInput(config.buyParams.downPaymentValue))
-        binding.etUpfrontCost.setText(formatNumberForInput(config.buyParams.upfrontCostPercent))
-        binding.cbUpfrontCostInclusive.isChecked = config.buyParams.isUpfrontCostInclusive
-        updateUpfrontCostState(config.buyParams.isUpfrontCostInclusive)
-        binding.etInterestRate.setText(formatNumberForInput(config.buyParams.loanInterestRateAnnual))
-        binding.etLoanTenure.setText(config.buyParams.loanTenureYears.toString())
-        binding.etPartPrepaymentAmount.setText(formatNumberForInput(config.buyParams.partPrepaymentAmount))
-        binding.actvPrepaymentFrequency.setText(config.buyParams.partPrepaymentFrequency.displayName, false)
-        binding.etPropertyAppreciation.setText(formatNumberForInput(config.buyParams.propertyAppreciationRateAnnual))
-        binding.etSocietyMaintenance.setText(formatNumberForInput(config.buyParams.monthlySocietyMaintenance))
-        binding.etMaintenanceEscalation.setText(formatNumberForInput(config.buyParams.maintenanceEscalationRateAnnual))
-        binding.etPropertyTaxAmount.setText(formatNumberForInput(config.buyParams.propertyTaxAnnualAmount))
-        binding.etPropertyUpkeepAmount.setText(formatNumberForInput(config.buyParams.propertyUpkeepAnnualAmount))
+        setIfNotFocused(binding.etProfileTitle, config.profileTitle)
+        setIfNotFocused(binding.etPropertyPrice, formatNumberForInput(config.buyParams.propertyPrice))
+        setIfNotFocused(binding.etDownPaymentValue, formatNumberForInput(config.buyParams.downPaymentValue))
+        setIfNotFocused(binding.etUpfrontCost, formatNumberForInput(config.buyParams.upfrontCostPercent))
 
-        binding.etInitialRent.setText(formatNumberForInput(config.rentParams.initialMonthlyRent))
-        binding.etRentEscalation.setText(formatNumberForInput(config.rentParams.rentEscalationRateAnnual))
-        binding.etSecurityDepositValue.setText(formatNumberForInput(config.rentParams.securityDepositValue))
-        binding.etAnnualRelocationCost.setText(formatNumberForInput(config.rentParams.annualRelocationCost))
-        binding.etBrokerage.setText(formatNumberForInput(config.rentParams.annualRentalBrokerage))
+        if (binding.cbUpfrontCostInclusive.isChecked != config.buyParams.isUpfrontCostInclusive) {
+            binding.cbUpfrontCostInclusive.isChecked = config.buyParams.isUpfrontCostInclusive
+            updateUpfrontCostState(config.buyParams.isUpfrontCostInclusive)
+        }
 
-        binding.etInvestmentReturn.setText(formatNumberForInput(config.investmentParams.annualReturnRatePercent))
-        binding.etTaxRate.setText(formatNumberForInput(config.investmentParams.taxRatePercent))
-        binding.actvInvestmentCompoundingFrequency.setText(config.investmentParams.compoundingFrequency.displayName, false)
+        setIfNotFocused(binding.etInterestRate, formatNumberForInput(config.buyParams.loanInterestRateAnnual))
+        setIfNotFocused(binding.etLoanTenure, config.buyParams.loanTenureYears.toString())
+        setIfNotFocused(binding.etPartPrepaymentAmount, formatNumberForInput(config.buyParams.partPrepaymentAmount))
 
-        binding.toggleStrategy.check(if (config.buyParams.isLoanSelected) R.id.btnStrategyLoan else R.id.btnStrategyCash)
-        binding.cardLoanParameters.visibility = if (config.buyParams.isLoanSelected) View.VISIBLE else View.GONE
-        binding.toggleDownPaymentUnit.check(if (config.buyParams.isDownPaymentPercent) R.id.btnDpPercent else R.id.btnDpAmount)
-        binding.toggleDepositUnit.check(if (config.rentParams.isSecurityDepositFixed) R.id.btnDepositAmount else R.id.btnDepositMonths)
+        if (binding.actvPrepaymentFrequency.text.toString() != config.buyParams.partPrepaymentFrequency.displayName) {
+            binding.actvPrepaymentFrequency.setText(config.buyParams.partPrepaymentFrequency.displayName, false)
+        }
+
+        setIfNotFocused(binding.etPropertyAppreciation, formatNumberForInput(config.buyParams.propertyAppreciationRateAnnual))
+        setIfNotFocused(binding.etSocietyMaintenance, formatNumberForInput(config.buyParams.monthlySocietyMaintenance))
+        setIfNotFocused(binding.etMaintenanceEscalation, formatNumberForInput(config.buyParams.maintenanceEscalationRateAnnual))
+        setIfNotFocused(binding.etPropertyTaxAmount, formatNumberForInput(config.buyParams.propertyTaxAnnualAmount))
+        setIfNotFocused(binding.etPropertyUpkeepAmount, formatNumberForInput(config.buyParams.propertyUpkeepAnnualAmount))
+
+        setIfNotFocused(binding.etInitialRent, formatNumberForInput(config.rentParams.initialMonthlyRent))
+        setIfNotFocused(binding.etRentEscalation, formatNumberForInput(config.rentParams.rentEscalationRateAnnual))
+        setIfNotFocused(binding.etSecurityDepositValue, formatNumberForInput(config.rentParams.securityDepositValue))
+        setIfNotFocused(binding.etAnnualRelocationCost, formatNumberForInput(config.rentParams.annualRelocationCost))
+        setIfNotFocused(binding.etBrokerage, formatNumberForInput(config.rentParams.annualRentalBrokerage))
+
+        setIfNotFocused(binding.etInvestmentReturn, formatNumberForInput(config.investmentParams.annualReturnRatePercent))
+        setIfNotFocused(binding.etTaxRate, formatNumberForInput(config.investmentParams.taxRatePercent))
+
+        if (binding.actvInvestmentCompoundingFrequency.text.toString() != config.investmentParams.compoundingFrequency.displayName) {
+            binding.actvInvestmentCompoundingFrequency.setText(config.investmentParams.compoundingFrequency.displayName, false)
+        }
+
+        val targetStrategyId = if (config.buyParams.isLoanSelected) R.id.btnStrategyLoan else R.id.btnStrategyCash
+        if (binding.toggleStrategy.checkedButtonId != targetStrategyId) {
+            binding.toggleStrategy.check(targetStrategyId)
+            binding.cardLoanParameters.visibility = if (config.buyParams.isLoanSelected) View.VISIBLE else View.GONE
+        }
+
+        val targetDpId = if (config.buyParams.isDownPaymentPercent) R.id.btnDpPercent else R.id.btnDpAmount
+        if (binding.toggleDownPaymentUnit.checkedButtonId != targetDpId) {
+            binding.toggleDownPaymentUnit.check(targetDpId)
+        }
+
+        val targetDepositId = if (config.rentParams.isSecurityDepositFixed) R.id.btnDepositAmount else R.id.btnDepositMonths
+        if (binding.toggleDepositUnit.checkedButtonId != targetDepositId) {
+            binding.toggleDepositUnit.check(targetDepositId)
+        }
     }
 
     private fun syncUiToViewModel() {
