@@ -98,31 +98,7 @@ class HomeCalculatorFragment : Fragment() {
 
     private fun setupActions() {
         binding.btnEvaluate.setOnClickListener {
-            binding.btnEvaluate.isEnabled = false
-            binding.btnEvaluate.text = "Calculating Loan Amortization..."
-            binding.progressEvaluating.visibility = View.VISIBLE
-
-            viewLifecycleOwner.lifecycleScope.launch {
-                delay(350)
-                binding.btnEvaluate.text = "Compounding Investment Portfolios..."
-
-                delay(350)
-                binding.btnEvaluate.text = "Evaluating Net Worth Crossovers..."
-
-                delay(350)
-
-                syncUiToViewModel()
-                viewModel.evaluateCurrentConfig()
-
-                binding.progressEvaluating.visibility = View.GONE
-                binding.btnEvaluate.text = "Evaluate Buy vs Rent"
-                binding.btnEvaluate.isEnabled = true
-
-                binding.cardResultSummary.post {
-                    binding.root.smoothScrollTo(0, binding.cardResultSummary.top - 16)
-                    animateResultCard()
-                }
-            }
+            showEvaluatingDialog()
         }
 
         binding.btnSaveDecision.setOnClickListener {
@@ -249,6 +225,51 @@ class HomeCalculatorFragment : Fragment() {
                 binding.layoutTabularHeader.visibility = if (isTabular) View.VISIBLE else View.GONE
                 progressionAdapter.viewStyle = if (isTabular) ProgressionAdapter.ViewStyle.TABULAR else ProgressionAdapter.ViewStyle.CARD
                 viewModel.calculationResult.value?.let { renderResult(it) }
+            }
+        }
+    }
+
+    private fun showEvaluatingDialog() {
+        syncUiToViewModel()
+
+        val dialogBinding = com.amitr.buyvsrentcalc.databinding.DialogEvaluatingEngineBinding.inflate(layoutInflater)
+        val dialog = AlertDialog.Builder(requireContext())
+            .setView(dialogBinding.root)
+            .setCancelable(false)
+            .create()
+
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog.show()
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            dialogBinding.tvEvaluationStageText.text = "Simulating Loan Amortization Schedules..."
+            dialogBinding.progressLinearEvaluating.setProgress(20, true)
+            dialogBinding.tvDialogCountdown.text = "Evaluating multi-year simulation in 4s..."
+            kotlinx.coroutines.delay(1200)
+
+            dialogBinding.tvEvaluationStageText.text = "Compounding Opportunity Investment Portfolios..."
+            dialogBinding.progressLinearEvaluating.setProgress(55, true)
+            dialogBinding.tvDialogCountdown.text = "Evaluating multi-year simulation in 3s..."
+            kotlinx.coroutines.delay(1300)
+
+            dialogBinding.tvEvaluationStageText.text = "Deducting Capital Gains Taxes & Relocation Costs..."
+            dialogBinding.progressLinearEvaluating.setProgress(80, true)
+            dialogBinding.tvDialogCountdown.text = "Evaluating multi-year simulation in 1s..."
+            kotlinx.coroutines.delay(1200)
+
+            dialogBinding.tvEvaluationStageText.text = "Evaluating Net Worth Crossovers & Winner..."
+            dialogBinding.progressLinearEvaluating.setProgress(100, true)
+            dialogBinding.tvDialogCountdown.text = "Finalizing results..."
+            kotlinx.coroutines.delay(500)
+
+            viewModel.evaluateCurrentConfig()
+            if (dialog.isShowing) {
+                dialog.dismiss()
+            }
+
+            binding.cardResultSummary.post {
+                binding.root.smoothScrollTo(0, binding.cardResultSummary.top - 16)
+                animateResultCard()
             }
         }
     }
