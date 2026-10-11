@@ -17,7 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:logo="@drawable/ic_app_logo"
             app:popupTheme="@style/Theme.BuyVsRentCalc.PopupOverlay" />
 
     </com.google.android.material.appbar.AppBarLayout>
