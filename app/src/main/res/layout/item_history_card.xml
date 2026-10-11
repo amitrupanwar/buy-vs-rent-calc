@@ -50,7 +50,7 @@
                 android:layout_height="32dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="Delete Saved Check"
-                android:src="@drawable/ic_close" />
+                android:src="@drawable/ic_delete" />
         </LinearLayout>
 
         <LinearLayout

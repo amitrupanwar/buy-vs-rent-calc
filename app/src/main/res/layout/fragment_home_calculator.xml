@@ -835,7 +835,7 @@
                 android:text="Evaluate Buy vs Rent"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:icon="@drawable/ic_calculator"
+                app:icon="@drawable/ic_app_logo"
                 app:iconGravity="textStart"
                 app:iconPadding="12dp" />
 
@@ -1168,8 +1168,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:contentDescription="Progression Icon"
-                android:src="@drawable/ic_calculator"
-                app:tint="?attr/colorPrimary" />
+                android:src="@drawable/ic_app_logo" />
 
             <TextView
                 android:layout_width="wrap_content"
