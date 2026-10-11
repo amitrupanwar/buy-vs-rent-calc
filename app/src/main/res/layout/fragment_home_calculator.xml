@@ -116,7 +116,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
                         android:text="🌐 Multi-Currency Auto-Detection (₹, $, €, £, A$, C$, ¥)"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🛡️ 100% Free to Use &amp; Zero Personal Info Requested (No Sign-Up)"
                         android:textColor="?attr/colorOnSurface"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -1001,6 +1009,37 @@
                             android:textStyle="bold"
                             tools:text="₹34,700" />
                     </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="?attr/colorOutlineVariant" />
+
+                <!-- Financial Disclaimer Note -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorSurfaceContainerLow"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⚠️"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:text="* Disclaimer: 100% free tool for informational scenario comparison. We do NOT ask for or collect any personal information. Calculations are mathematical estimations based strictly on your input parameters; final financial decisions rest solely with you. Consult certified financial advisors before making investment decisions."
+                        android:textColor="?attr/colorOnSurfaceVariant"
+                        android:textSize="10sp" />
                 </LinearLayout>
 
             </LinearLayout>

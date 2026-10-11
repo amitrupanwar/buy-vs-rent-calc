@@ -8,6 +8,11 @@ Welcome to **Buy vs Rent Calculator** ("we," "our," or "us"), developed by **Ami
 
 By installing and using the Buy vs Rent Calculator application, you agree to the collection and use of information in accordance with this Privacy Policy.
 
+### 1.1 100% Free Application & Zero Personal Information Requested
+- **100% Free Access**: This application is completely free to use with zero hidden fees, subscriptions, or paywalls.
+- **No Personal Information Requested**: We do **NOT** require user registration, account creation, name, email address, phone number, or banking details to use the calculator. You can run unlimited financial calculations anonymously.
+- **Non-Binding Financial Disclaimer**: All calculations, net worth comparisons, and break-even crossover points are mathematical projections derived strictly from user-specified input parameters. This application is for informational scenario comparison only and does **NOT** provide binding financial, investment, legal, or tax advice. Final financial decisions rest solely with the user. Real-world property appreciation, interest rates, and tax outcomes vary by region and market conditions. Users should consult certified financial planners before making investment decisions.
+
 ---
 
 ## 2. Information We Collect & Process
