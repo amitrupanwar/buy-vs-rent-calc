@@ -52,10 +52,14 @@ Google AdMob uses this information in accordance with Google's privacy standards
 
 ---
 
-## 4. Third-Party Privacy Policies & Ad Customization
-Our app uses Google AdMob services. You can review the privacy policies and ad personalization practices of Google below:
+## 4. Third-Party Privacy Policies & Relevant Links
+Our application integrates services provided by Google LLC. To understand how Google manages data, please review the following official policies and resources:
+
 - **Google Privacy Policy**: [https://policies.google.com/privacy](https://policies.google.com/privacy)
 - **How Google Uses Information From Sites or Apps**: [https://policies.google.com/technologies/partner-sites](https://policies.google.com/technologies/partner-sites)
+- **Google AdMob Behavioral & Personalized Advertising**: [https://support.google.com/admob/answer/7676680](https://support.google.com/admob/answer/7676680)
+- **Google AdMob Technical Data Collection Details**: [https://support.google.com/admob/answer/9012903](https://support.google.com/admob/answer/9012903)
+- **Google Ads Preferences & Opt-Out Portal**: [https://adssettings.google.com](https://adssettings.google.com)
 
 ---
 

@@ -86,8 +86,14 @@ class SettingsFragment : Fragment() {
             3. On-Device Data Storage (Room DB):
             Your financial privacy is 100% guaranteed. All financial inputs, loan parameters, rent calculations, and saved decision profiles are stored strictly on your device using Android's Room Database. Financial data is NEVER transmitted to external servers.
             
-            4. Google AdMob Advertising:
+            4. Google AdMob Advertising & Policy Links:
             Our application uses Google AdMob to display banner advertisements. Google AdMob and Google Play Services may collect non-personally identifiable technical information (such as Android Advertising ID, IP address, device model, and ad interaction metrics) to serve relevant ads.
+            
+            Official Google Policy Links:
+            • Google Privacy Policy: https://policies.google.com/privacy
+            • Google Ad Services: https://policies.google.com/technologies/partner-sites
+            • Google AdMob Policy: https://support.google.com/admob/answer/7676680
+            • Google Ads Settings: https://adssettings.google.com
             
             5. Ad Opt-Out & Data Management:
             You can opt-out of personalized ads via Android System Settings (Settings -> Google -> Ads). You can delete saved decision profiles anytime from the History tab or clear all app data in Android settings.
