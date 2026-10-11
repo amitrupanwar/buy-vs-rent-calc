@@ -99,11 +99,17 @@ class HomeCalculatorFragment : Fragment() {
     private fun setupActions() {
         binding.btnEvaluate.setOnClickListener {
             binding.btnEvaluate.isEnabled = false
-            binding.btnEvaluate.text = "Evaluating Financial Engine..."
+            binding.btnEvaluate.text = "Calculating Loan Amortization..."
             binding.progressEvaluating.visibility = View.VISIBLE
 
             viewLifecycleOwner.lifecycleScope.launch {
-                delay(650)
+                delay(350)
+                binding.btnEvaluate.text = "Compounding Investment Portfolios..."
+
+                delay(350)
+                binding.btnEvaluate.text = "Evaluating Net Worth Crossovers..."
+
+                delay(350)
 
                 syncUiToViewModel()
                 viewModel.evaluateCurrentConfig()
