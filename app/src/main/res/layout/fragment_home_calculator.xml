@@ -232,14 +232,28 @@
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
         <!-- Section 1: Property & Purchase Parameters -->
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Property &amp; Purchase Parameters"
-            android:textColor="?attr/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:contentDescription="Property Icon"
+                android:src="@drawable/ic_home_property" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Property &amp; Purchase Parameters"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <!-- Row 1: Property Price & Property Appreciation on Same Line -->
         <LinearLayout
@@ -405,13 +419,27 @@
                 android:orientation="vertical"
                 android:padding="14dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Loan &amp; Financing Parameters"
-                    android:textColor="?attr/colorPrimary"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:contentDescription="Bank Icon"
+                        android:src="@drawable/ic_bank_loan" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Loan &amp; Financing Parameters"
+                        android:textColor="?attr/colorPrimary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <!-- Down Payment Row -->
                 <LinearLayout
@@ -559,14 +587,28 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Section 3: Rent Scenario Inputs -->
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Rent Scenario Parameters"
-            android:textColor="?attr/colorSecondary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:contentDescription="Rent Icon"
+                android:src="@drawable/ic_key_rent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Rent Scenario Parameters"
+                android:textColor="?attr/colorSecondary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -699,14 +741,28 @@
         </LinearLayout>
 
         <!-- Section 4: Opportunity Investment Options (Renting) -->
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Opportunity Investment Options (Renting)"
-            android:textColor="?attr/colorPrimary"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:contentDescription="Investment Icon"
+                android:src="@drawable/ic_trending_growth" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Opportunity Investment Options (Renting)"
+                android:textColor="?attr/colorPrimary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -1101,14 +1157,29 @@
         </com.google.android.material.card.MaterialCardView>
 
         <!-- Detailed Progression Section Title -->
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Financial Progression Details"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="Progression Icon"
+                android:src="@drawable/ic_calculator"
+                app:tint="?attr/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Financial Progression Details"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <!-- Controls Row: Display Format (Cards vs Table View) -->
         <LinearLayout
