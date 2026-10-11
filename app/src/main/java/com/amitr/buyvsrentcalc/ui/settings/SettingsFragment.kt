@@ -74,24 +74,23 @@ class SettingsFragment : Fragment() {
 
     private fun showPrivacyPolicyDialog() {
         val policyText = """
-            Privacy Policy — Buy vs Rent Calculator
-            Effective Date: October 24, 2024
-            Developer: Amit Rupanwar
+            Privacy Policy & Financial Disclaimer
+            Effective Date: October 24, 2024 | Developer: Amit Rupanwar
             
-            1. On-Device Data Storage:
-            Your financial privacy is 100% guaranteed. All financial inputs, loan parameters, rent calculations, and saved decision profiles are stored strictly on your device using Android's Room Database. Your financial data is NEVER transmitted, uploaded, or shared with external servers.
+            1. 100% Free & Zero Personal Data Requested:
+            This app is completely free. We do NOT ask for or collect any personal information (no sign-up or registration required).
             
-            2. Google AdMob & Advertising Data:
-            Our application uses Google AdMob to display banner advertisements. Google AdMob and Google Play Services may collect non-personally identifiable technical information (such as Android Advertising ID, IP address, device model, and ad interaction metrics) to serve relevant ads and measure performance.
+            2. Financial Calculation & Risk Disclaimer:
+            All calculations, net worth projections, and break-even crossover points are mathematical estimations derived strictly from user-specified input parameters. This app is for informational scenario comparison only and does NOT constitute binding financial, investment, legal, or tax advice. Real-world property appreciation, interest rates, and tax rates vary substantially by region and market conditions. The final financial decision rests solely with the user. Users should consult certified financial planners before making investment decisions.
             
-            3. User Choices & Ad Opt-Out:
-            You can opt-out of personalized ads or reset your Advertising ID at any time via Android System Settings (Settings -> Google -> Ads -> Opt out of Ads Personalization).
+            3. On-Device Data Storage (Room DB):
+            Your financial privacy is 100% guaranteed. All financial inputs, loan parameters, rent calculations, and saved decision profiles are stored strictly on your device using Android's Room Database. Financial data is NEVER transmitted to external servers.
             
-            4. Managing & Deleting Saved Profiles:
-            You can delete saved decision checks anytime from the History tab, or clear all app data permanently in Android System Settings.
+            4. Google AdMob Advertising:
+            Our application uses Google AdMob to display banner advertisements. Google AdMob and Google Play Services may collect non-personally identifiable technical information (such as Android Advertising ID, IP address, device model, and ad interaction metrics) to serve relevant ads.
             
-            5. Children's Privacy:
-            This app does not knowingly collect personal data from children under 13.
+            5. Ad Opt-Out & Data Management:
+            You can opt-out of personalized ads via Android System Settings (Settings -> Google -> Ads). You can delete saved decision profiles anytime from the History tab or clear all app data in Android settings.
             
             6. Contact & Support:
             Email: amitrupanwar@gmail.com
@@ -99,7 +98,7 @@ class SettingsFragment : Fragment() {
         """.trimIndent()
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Privacy Policy & Data Security")
+            .setTitle("Privacy Policy & Financial Disclaimer")
             .setMessage(policyText)
             .setPositiveButton("OK", null)
             .show()
