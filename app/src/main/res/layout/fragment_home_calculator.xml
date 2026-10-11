@@ -787,45 +787,6 @@
                 app:trackThickness="3dp" />
         </FrameLayout>
 
-        <!-- AdMob Banner Ad Space 1 (Below Calculate Button) -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardAdBannerMid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="1dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="?attr/colorOutlineVariant">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/shape_badge_rounded"
-                    android:paddingHorizontal="6dp"
-                    android:paddingVertical="2dp"
-                    android:text="Ad"
-                    android:textColor="?attr/colorOnPrimary"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="AdMob Banner Space (320x50 / Adaptive)"
-                    android:textColor="?attr/colorOnSurfaceVariant"
-                    android:textSize="12sp" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
         <!-- Evaluated Recommendation & Derived Metrics Card -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardResultSummary"
@@ -1060,6 +1021,45 @@
             app:icon="@drawable/ic_save"
             app:iconGravity="textStart"
             app:iconPadding="12dp" />
+
+        <!-- AdMob Banner Ad Space 1 (Below Save Button) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardAdBannerSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="1dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorOutlineVariant">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_badge_rounded"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="2dp"
+                    android:text="Ad"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="AdMob Banner Space (Below Save Button)"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- Detailed Progression Section Title -->
         <TextView
@@ -1363,6 +1363,45 @@
                     tools:listitem="@layout/item_yearly_summary" />
             </LinearLayout>
         </HorizontalScrollView>
+
+        <!-- AdMob Banner Ad Space 2 (Above Progression Chart) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardAdBannerAboveChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="1dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="?attr/colorOutlineVariant">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_badge_rounded"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="2dp"
+                    android:text="Ad"
+                    android:textColor="?attr/colorOnPrimary"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="AdMob Banner Space (Above Chart)"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- Financial Progression Comparison Chart Card (At Very Bottom) -->
         <com.google.android.material.card.MaterialCardView
