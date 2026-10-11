@@ -289,9 +289,11 @@ class HomeCalculatorFragment : Fragment() {
             .setPositiveButton("Save") { _, _ ->
                 syncUiToViewModel()
                 val title = input.text.toString().ifBlank { "Home Buy vs Rent Check" }
+                val isNew = (viewModel.currentConfig.value.id == 0L || title != viewModel.currentConfig.value.profileTitle)
                 binding.etProfileTitle.setText(title)
                 viewModel.updateProfileTitle(title)
                 viewModel.saveCurrentDecision(
+                    asNewCheck = isNew,
                     onSaved = { id ->
                         showSaveSuccessAlert(title)
                     },

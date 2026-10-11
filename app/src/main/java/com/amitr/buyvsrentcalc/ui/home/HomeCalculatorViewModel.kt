@@ -130,12 +130,17 @@ class HomeCalculatorViewModel(application: Application) : AndroidViewModel(appli
         _calculationResult.value = result
     }
 
-    fun saveCurrentDecision(onSaved: (Long) -> Unit = {}, onError: (String) -> Unit = {}) {
+    fun saveCurrentDecision(asNewCheck: Boolean = false, onSaved: (Long) -> Unit = {}, onError: (String) -> Unit = {}) {
         viewModelScope.launch {
             try {
-                val config = _currentConfig.value
-                val id = repository.saveDecision(config)
-                _currentConfig.value = config.copy(id = id)
+                val curr = _currentConfig.value
+                val saveId = if (asNewCheck) 0 else curr.id
+                val configToSave = curr.copy(
+                    id = saveId,
+                    createdTimestamp = System.currentTimeMillis()
+                )
+                val id = repository.saveDecision(configToSave)
+                _currentConfig.value = configToSave.copy(id = id)
                 onSaved(id)
             } catch (e: Exception) {
                 onError(e.message ?: "Failed to save decision check")
