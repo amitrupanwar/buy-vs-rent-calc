@@ -10,13 +10,24 @@ object CurrencyFormatter {
     private const val KEY_CURRENCY_SYMBOL = "currency_symbol"
 
     val CURRENCY_OPTIONS = listOf(
-        "₹ (INR)" to "₹",
-        "$ (USD)" to "$",
-        "€ (EUR)" to "€",
-        "£ (GBP)" to "£",
-        "A$ (AUD)" to "A$",
-        "C$ (CAD)" to "C$",
-        "¥ (JPY)" to "¥"
+        "INR (₹)" to "₹",
+        "USD ($)" to "$",
+        "EUR (€)" to "€",
+        "GBP (£)" to "£",
+        "AUD (A$)" to "A$",
+        "CAD (C$)" to "C$",
+        "JPY (¥)" to "¥",
+        "AED" to "AED ",
+        "SGD (S$)" to "S$",
+        "CHF" to "CHF ",
+        "CNY (¥)" to "¥",
+        "NPR (Rs)" to "Rs ",
+        "PKR (Rs)" to "Rs ",
+        "BDT (Tk)" to "Tk ",
+        "ZAR (R)" to "R ",
+        "BRL (R$)" to "R$",
+        "SEK (kr)" to "kr ",
+        "PLN (zł)" to "zł "
     )
 
     fun getDefaultRegionCurrencySymbol(): String {
@@ -27,9 +38,18 @@ object CurrencyFormatter {
                 "IN" -> "₹"
                 "US" -> "$"
                 "GB" -> "£"
-                "JP" -> "¥"
+                "JP", "CN" -> "¥"
                 "AU" -> "A$"
                 "CA" -> "C$"
+                "AE" -> "AED "
+                "SG" -> "S$"
+                "CH" -> "CHF "
+                "NP", "PK" -> "Rs "
+                "BD" -> "Tk "
+                "ZA" -> "R "
+                "BR" -> "R$"
+                "SE" -> "kr "
+                "PL" -> "zł "
                 "DE", "FR", "IT", "ES", "NL", "BE", "AT", "GR", "FI", "PT", "IE", "LU", "SK", "SI", "EE", "LV", "LT", "CY", "MT" -> "€"
                 else -> {
                     val currency = Currency.getInstance(locale)
@@ -69,7 +89,8 @@ object CurrencyFormatter {
     }
 
     fun getSymbolFromOptionLabel(label: String): String {
-        return CURRENCY_OPTIONS.find { it.first == label }?.second ?: label.takeWhile { !it.isWhitespace() }
+        return CURRENCY_OPTIONS.find { it.first == label }?.second
+            ?: label.substringAfter('(').substringBefore(')').ifBlank { label }
     }
 
     fun format(value: Double, symbol: String): String {

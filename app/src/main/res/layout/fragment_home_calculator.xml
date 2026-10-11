@@ -151,7 +151,7 @@
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
+                android:layout_weight="1.3"
                 android:hint="Decision Profile Title">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -176,7 +176,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="none"
-                    android:text="₹ (INR)" />
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textSize="13sp"
+                    android:text="INR (₹)" />
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
 
@@ -214,22 +218,42 @@
             app:selectionRequired="true"
             app:checkedButton="@id/btnStrategyLoan">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnStrategyLoan"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Loan Financing" />
+                android:text="Loan Financing"
+                android:textSize="13sp"
+                app:icon="@drawable/ic_bank_loan"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnStrategyCash"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Full Cash Pay" />
+                android:text="Full Cash Pay"
+                android:textSize="13sp"
+                app:icon="@drawable/ic_cash"
+                app:iconGravity="textStart"
+                app:iconPadding="8dp" />
         </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <!-- Strategy Explanation Hint Box -->
+        <TextView
+            android:id="@+id/tvStrategyExplanationHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="?attr/colorSurfaceContainerLow"
+            android:padding="8dp"
+            android:text="💡 Loan Financing: Finances the property via a mortgage loan. Requires a down payment and monthly EMIs while investing remaining capital."
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="11sp" />
 
         <!-- Section 1: Property & Purchase Parameters -->
         <LinearLayout
