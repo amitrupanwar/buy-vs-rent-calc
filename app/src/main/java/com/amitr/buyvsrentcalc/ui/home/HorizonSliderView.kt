@@ -7,7 +7,6 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.widget.FrameLayout
-import com.amitr.buyvsrentcalc.R
 import com.amitr.buyvsrentcalc.databinding.ViewHorizonSliderBinding
 import com.google.android.material.color.MaterialColors
 import com.google.android.material.slider.Slider
@@ -72,9 +71,9 @@ class HorizonSliderView @JvmOverloads constructor(
         val tickValues = listOf(1f, 5f, 10f, 15f, 20f, 25f, 30f)
         val majorLabelValues = setOf(1f, 10f, 20f, 30f)
 
-        val tickTop = trackY + dpToPx(10f)
-        val tickBottom = trackY + dpToPx(18f)
-        val textY = tickBottom + dpToPx(14f)
+        val tickTop = trackY + dpToPx(6f)
+        val tickBottom = trackY + dpToPx(13f)
+        val textY = tickBottom + dpToPx(11f)
 
         for (v in tickValues) {
             val ratio = (v - valFrom) / totalRange

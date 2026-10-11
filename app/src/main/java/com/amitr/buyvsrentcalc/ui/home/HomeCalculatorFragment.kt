@@ -143,7 +143,15 @@ class HomeCalculatorFragment : Fragment() {
             if (isChecked) {
                 val isLoan = checkedId == R.id.btnStrategyLoan
                 binding.cardLoanParameters.visibility = if (isLoan) View.VISIBLE else View.GONE
+                
+                binding.tvStrategyExplanationHint.text = if (isLoan) {
+                    "💡 Loan Financing: Requires a down payment (e.g. 20%) and monthly loan EMIs. The remaining upfront cash is invested in your opportunity portfolio."
+                } else {
+                    "💡 Full Cash Pay: Purchases the property outright with 100% upfront cash payment — zero mortgage, zero loan interest, and zero monthly EMIs."
+                }
+
                 viewModel.updateBuyParams { it.copy(isLoanSelected = isLoan) }
+                updateSaveButtonState()
             }
         }
 

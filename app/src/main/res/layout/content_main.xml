@@ -25,5 +25,8 @@
         android:layout_height="64dp"
         android:layout_gravity="bottom"
         app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/selector_nav_item_text_color"
+        app:itemTextColor="@color/selector_nav_item_text_color"
+        app:itemRippleColor="#250284C7"
         app:menu="@menu/bottom_navigation" />
 </LinearLayout>

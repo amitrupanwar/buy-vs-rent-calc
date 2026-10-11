@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         setupActionBarWithNavController(navController, appBarConfiguration)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         binding.navView?.setupWithNavController(navController)
         binding.appBarMain.contentMain.bottomNavView?.setupWithNavController(navController)

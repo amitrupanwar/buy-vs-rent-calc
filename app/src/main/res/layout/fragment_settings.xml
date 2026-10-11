@@ -262,7 +262,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Version 1.0"
+                        android:text="Version 1.0.0"
                         android:textColor="?attr/colorPrimary"
                         android:textSize="12sp"
                         android:textStyle="bold" />
