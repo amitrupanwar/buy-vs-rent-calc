@@ -74,25 +74,28 @@ class SettingsFragment : Fragment() {
 
     private fun showPrivacyPolicyDialog() {
         val policyText = """
-            Privacy Policy for Buy vs Rent Calculator
-            Effective Date: 24 Oct 2024
+            Privacy Policy — Buy vs Rent Calculator
+            Effective Date: October 24, 2024
+            Developer: Amit Rupanwar
             
-            1. Overview & Data Storage:
-            Your privacy is our priority. All financial parameters, profile titles, and saved decision checks are stored 100% locally on your device using Android's Room Database. We do not transmit or store your financial data on external servers.
+            1. On-Device Data Storage:
+            Your financial privacy is 100% guaranteed. All financial inputs, loan parameters, rent calculations, and saved decision profiles are stored strictly on your device using Android's Room Database. Your financial data is NEVER transmitted, uploaded, or shared with external servers.
             
-            2. Advertising (Google AdMob):
-            Our application uses Google AdMob to serve non-intrusive banner advertisements. Google AdMob and Google Play Services may collect non-personally identifiable technical information (such as Advertising IDs, device model, IP address, and ad interaction metrics) to serve relevant ads and measure ad performance.
+            2. Google AdMob & Advertising Data:
+            Our application uses Google AdMob to display banner advertisements. Google AdMob and Google Play Services may collect non-personally identifiable technical information (such as Android Advertising ID, IP address, device model, and ad interaction metrics) to serve relevant ads and measure performance.
             
-            3. Privacy Choices & Advertising Opt-Out:
-            You can opt-out of personalized ads or reset your Advertising ID at any time in your Android system settings under Settings -> Google -> Ads -> Opt out of Ads Personalization.
+            3. User Choices & Ad Opt-Out:
+            You can opt-out of personalized ads or reset your Advertising ID at any time via Android System Settings (Settings -> Google -> Ads -> Opt out of Ads Personalization).
             
-            4. Local Data Management:
-            You can delete saved decision checks anytime from the History tab or clear all app data in Android system settings.
+            4. Managing & Deleting Saved Profiles:
+            You can delete saved decision checks anytime from the History tab, or clear all app data permanently in Android System Settings.
             
-            5. Contact Us:
-            For privacy questions or support, contact developer Amit Rupanwar at:
+            5. Children's Privacy:
+            This app does not knowingly collect personal data from children under 13.
+            
+            6. Contact & Support:
             Email: amitrupanwar@gmail.com
-            GitHub: https://github.com/amitrupanwar/buy-vs-rent-calc
+            Repository: https://github.com/amitrupanwar/buy-vs-rent-calc
         """.trimIndent()
 
         AlertDialog.Builder(requireContext())
