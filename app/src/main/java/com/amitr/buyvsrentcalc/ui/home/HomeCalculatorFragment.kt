@@ -43,6 +43,24 @@ class HomeCalculatorFragment : Fragment() {
     private val progressionAdapter = ProgressionAdapter()
     private var currentCurrencySymbol: String = "₹"
     private val expandedYearIndices = mutableSetOf<Int>()
+    private var lastSavedBaselineConfig: HomeDecisionConfig? = null
+
+    private fun updateSaveButtonState() {
+        val curr = viewModel.currentConfig.value
+        val baseline = lastSavedBaselineConfig
+        val hasChanged = if (baseline == null) {
+            false
+        } else {
+            curr.profileTitle != baseline.profileTitle ||
+            curr.evaluationHorizonYears != baseline.evaluationHorizonYears ||
+            curr.buyParams != baseline.buyParams ||
+            curr.rentParams != baseline.rentParams ||
+            curr.investmentParams != baseline.investmentParams
+        }
+
+        binding.btnSaveDecision.isEnabled = hasChanged
+        binding.btnSaveDecision.alpha = if (hasChanged) 1.0f else 0.5f
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -275,6 +293,7 @@ class HomeCalculatorFragment : Fragment() {
     }
 
     private fun showSaveConfirmDialog() {
+        syncUiToViewModel()
         val currentTitle = binding.etProfileTitle.text.toString().ifBlank { "My Home Buy vs Rent Check" }
         val input = EditText(requireContext()).apply {
             setText(currentTitle)
@@ -289,21 +308,50 @@ class HomeCalculatorFragment : Fragment() {
             .setPositiveButton("Save") { _, _ ->
                 syncUiToViewModel()
                 val title = input.text.toString().ifBlank { "Home Buy vs Rent Check" }
-                val isNew = (viewModel.currentConfig.value.id == 0L || title != viewModel.currentConfig.value.profileTitle)
                 binding.etProfileTitle.setText(title)
                 viewModel.updateProfileTitle(title)
-                viewModel.saveCurrentDecision(
-                    asNewCheck = isNew,
-                    onSaved = { id ->
-                        showSaveSuccessAlert(title)
-                    },
-                    onError = { errorMsg ->
-                        Toast.makeText(requireContext(), "Save failed: $errorMsg", Toast.LENGTH_LONG).show()
-                    }
-                )
+
+                val existing = viewModel.savedDecisions.value.find {
+                    it.profileTitle.equals(title, ignoreCase = true)
+                }
+
+                if (existing != null) {
+                    showOverwritePromptDialog(existing, title)
+                } else {
+                    performSave(asNewCheck = true, title = title)
+                }
             }
             .setNegativeButton("Cancel", null)
             .show()
+    }
+
+    private fun showOverwritePromptDialog(existing: HomeDecisionConfig, title: String) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("Overwrite Existing Check?")
+            .setMessage("A saved check named '$title' already exists in your History. Do you want to overwrite it or save as a new check?")
+            .setPositiveButton("Overwrite") { _, _ ->
+                viewModel.updateConfig(viewModel.currentConfig.value.copy(id = existing.id))
+                performSave(asNewCheck = false, title = title)
+            }
+            .setNeutralButton("Save as New") { _, _ ->
+                performSave(asNewCheck = true, title = title)
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun performSave(asNewCheck: Boolean, title: String) {
+        viewModel.saveCurrentDecision(
+            asNewCheck = asNewCheck,
+            onSaved = { id ->
+                lastSavedBaselineConfig = viewModel.currentConfig.value
+                updateSaveButtonState()
+                showSaveSuccessAlert(title)
+            },
+            onError = { errorMsg ->
+                Toast.makeText(requireContext(), "Save failed: $errorMsg", Toast.LENGTH_LONG).show()
+            }
+        )
     }
 
     private fun showSaveSuccessAlert(title: String) {
@@ -413,6 +461,7 @@ class HomeCalculatorFragment : Fragment() {
                 if (editText.hasFocus()) {
                     val value = s.toString().toDoubleOrNull() ?: 0.0
                     onValueChange(value)
+                    updateSaveButtonState()
                 }
             }
         })
@@ -426,6 +475,7 @@ class HomeCalculatorFragment : Fragment() {
                 if (editText.hasFocus()) {
                     val value = s.toString().toIntOrNull() ?: 0
                     onValueChange(value)
+                    updateSaveButtonState()
                 }
             }
         })
@@ -449,6 +499,10 @@ class HomeCalculatorFragment : Fragment() {
                         if (binding.horizonSliderView.slider.value != clampedYears) {
                             binding.horizonSliderView.slider.value = clampedYears
                         }
+                        if (lastSavedBaselineConfig == null) {
+                            lastSavedBaselineConfig = config
+                        }
+                        updateSaveButtonState()
                     }
                 }
                 launch {
